@@ -8,6 +8,8 @@ import AddTeam from "./Pages/AddTeam";
 import UpdateTeam from "./Pages/UpdateTeam";
 import DeleteTeam from "./Pages/DeleteTeam";
 import TeamStats from "./Pages/TeamStats";
+import DisplayTenTeams from "./Pages/DisplayTenTeams";
+import DisplayAllTeams from "./Pages/DisplayAllTeams";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: "/team/stats",
         element: <TeamStats />,
+      },
+      {
+        path: "/team/displayten",
+        element: <DisplayTenTeams />,
+      },
+      {
+        path: "/team/displayall",
+        element: <DisplayAllTeams />,
       },
     ],
   },

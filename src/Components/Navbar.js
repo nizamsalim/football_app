@@ -59,14 +59,22 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/team/displayten"
+                >
                   Display 10 teams
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/team/displayall"
+                >
                   Display all teams
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

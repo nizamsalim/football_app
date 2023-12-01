@@ -21,7 +21,7 @@ function DeleteTeam() {
   const showAlert = (type) => {
     setAlertType(type);
     if (type === "success") {
-      setMessage("Team updated successfully");
+      setMessage("Team deleted successfully");
     } else {
       setMessage("Something went wrong");
     }
@@ -38,6 +38,7 @@ function DeleteTeam() {
   const [message, setMessage] = useState("");
   const [id, setId] = useState("");
   const [team, setTeam] = useState("");
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const handleDeleteSubmit = (e) => {
     e.preventDefault();
@@ -46,6 +47,7 @@ function DeleteTeam() {
       .post(`http://localhost:5000/football/team/delete/${id}`)
       .then((res) => {
         setIsLoading(false);
+        setIsDeleted(true);
         if (res.data.success) {
           showAlert("success");
           axios
@@ -106,6 +108,7 @@ function DeleteTeam() {
                 type="button"
                 className="btn btn-danger"
                 onClick={handleDeleteSubmit}
+                disabled={isDeleted}
               >
                 Delete
               </button>
@@ -184,6 +187,7 @@ function DeleteTeam() {
                       onClick={(e) => {
                         setId(ele._id);
                         setTeam(ele.team);
+                        setIsDeleted(false);
                       }}
                     >
                       <i
