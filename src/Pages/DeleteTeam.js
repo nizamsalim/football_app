@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
+import Alert from "../Components/Alert";
 
 function DeleteTeam() {
   const handleSearchSubmit = (e) => {
@@ -14,9 +15,6 @@ function DeleteTeam() {
         if (res.data.success) {
           setTeams(res.data.result);
         }
-      })
-      .catch((res) => {
-        showAlert("danger");
       });
   };
 
@@ -38,9 +36,83 @@ function DeleteTeam() {
   const [isVisible, setIsVisible] = useState(false);
   const [alertType, setAlertType] = useState("");
   const [message, setMessage] = useState("");
+  const [id, setId] = useState("");
+  const [team, setTeam] = useState("");
+
+  const handleDeleteSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    axios
+      .post(`http://localhost:5000/football/team/delete/${id}`)
+      .then((res) => {
+        setIsLoading(false);
+        if (res.data.success) {
+          showAlert("success");
+          axios
+            .get(`http://localhost:5000/football/team/get/${team}`)
+            .then((res) => {
+              setIsLoading(false);
+              if (res.data.success) {
+                setTeams(res.data.result);
+              }
+            });
+        } else {
+          showAlert("danger");
+        }
+      });
+  };
 
   return (
     <div>
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                Delete team
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              {isVisible && (
+                <Alert
+                  isVisible={isVisible}
+                  type={alertType}
+                  message={message}
+                />
+              )}
+              Are you sure you want to delete the team <b> {team} </b>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={handleDeleteSubmit}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="d-flex justify-content-center">
         <form
           className="row g-3 ms-5 mt-2"
@@ -109,7 +181,10 @@ function DeleteTeam() {
                       className="btn btn-danger"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
-                      onClick={(e) => {}}
+                      onClick={(e) => {
+                        setId(ele._id);
+                        setTeam(ele.team);
+                      }}
                     >
                       <i
                         className="fa-solid fa-trash"

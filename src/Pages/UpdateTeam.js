@@ -15,9 +15,6 @@ function UpdateTeam() {
         if (res.data.success) {
           setTeams(res.data.result);
         }
-      })
-      .catch((res) => {
-        showAlert("danger");
       });
   };
 

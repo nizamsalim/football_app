@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 import AddTeam from "./Pages/AddTeam";
 import UpdateTeam from "./Pages/UpdateTeam";
 import DeleteTeam from "./Pages/DeleteTeam";
+import TeamStats from "./Pages/TeamStats";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/team/delete",
         element: <DeleteTeam />,
+      },
+      {
+        path: "/team/stats",
+        element: <TeamStats />,
       },
     ],
   },
