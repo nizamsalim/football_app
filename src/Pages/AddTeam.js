@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import Alert from "../Components/Alert";
+import { API_BASE_URL } from "../BaseUrl";
 
 function AddTeam() {
   const clearForm = (e) => {
@@ -30,7 +31,7 @@ function AddTeam() {
       year: Number(e.target.year.value),
     };
     axios
-      .post("http://localhost:5000/football/add", data)
+      .post(`${API_BASE_URL}/football/add`, data)
       .then((res) => {
         setIsLoading(false);
         console.log(res);

@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
+import { API_BASE_URL } from "../BaseUrl";
 
 function DisplayAllTeams() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     axios
-      .post(`http://localhost:5000/football/team/get`, {
+      .post(`${API_BASE_URL}/football/team/get`, {
         year,
       })
       .then((res) => {

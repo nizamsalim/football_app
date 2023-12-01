@@ -6,9 +6,9 @@ function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand pb-2" href="/">
+          <Link className="navbar-brand pb-2" to="/">
             <b> Football </b>
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"

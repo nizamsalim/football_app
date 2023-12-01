@@ -2,20 +2,19 @@ import axios from "axios";
 import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import Alert from "../Components/Alert";
+import { API_BASE_URL } from "../BaseUrl";
 
 function DeleteTeam() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     const teamName = e.target.team.value;
-    axios
-      .get(`http://localhost:5000/football/team/get/${teamName}`)
-      .then((res) => {
-        setIsLoading(false);
-        if (res.data.success) {
-          setTeams(res.data.result);
-        }
-      });
+    axios.get(`${API_BASE_URL}/football/team/get/${teamName}`).then((res) => {
+      setIsLoading(false);
+      if (res.data.success) {
+        setTeams(res.data.result);
+      }
+    });
   };
 
   const showAlert = (type) => {
@@ -43,25 +42,21 @@ function DeleteTeam() {
   const handleDeleteSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    axios
-      .post(`http://localhost:5000/football/team/delete/${id}`)
-      .then((res) => {
-        setIsLoading(false);
-        setIsDeleted(true);
-        if (res.data.success) {
-          showAlert("success");
-          axios
-            .get(`http://localhost:5000/football/team/get/${team}`)
-            .then((res) => {
-              setIsLoading(false);
-              if (res.data.success) {
-                setTeams(res.data.result);
-              }
-            });
-        } else {
-          showAlert("danger");
-        }
-      });
+    axios.post(`${API_BASE_URL}/football/team/delete/${id}`).then((res) => {
+      setIsLoading(false);
+      setIsDeleted(true);
+      if (res.data.success) {
+        showAlert("success");
+        axios.get(`${API_BASE_URL}/football/team/get/${team}`).then((res) => {
+          setIsLoading(false);
+          if (res.data.success) {
+            setTeams(res.data.result);
+          }
+        });
+      } else {
+        showAlert("danger");
+      }
+    });
   };
 
   return (

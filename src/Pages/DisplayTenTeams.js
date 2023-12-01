@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Alert from "../Components/Alert";
 import { ClipLoader } from "react-spinners";
+import { API_BASE_URL } from "../BaseUrl";
 
 function DisplayTenTeams() {
   const handleSearchSubmit = (e) => {
@@ -9,7 +9,7 @@ function DisplayTenTeams() {
     setIsLoading(true);
     const threshold = e.target.threshold.value;
     axios
-      .post(`http://localhost:5000/football/team/get/thresholdwin`, {
+      .post(`${API_BASE_URL}/football/team/get/thresholdwin`, {
         threshold,
       })
       .then((res) => {

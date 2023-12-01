@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Alert from "../Components/Alert";
 import { ClipLoader } from "react-spinners";
+import { API_BASE_URL } from "../BaseUrl";
 
 function TeamStats() {
   const handleSearchSubmit = (e) => {
@@ -9,29 +9,23 @@ function TeamStats() {
     setIsLoading(true);
     const team = e.target.team.value;
     const year = e.target.year.value;
-    axios
-      .get(`http://localhost:5000/football/stats/${team}/${year}`)
-      .then((res) => {
-        setIsLoading(false);
-        if (res.data.success) {
-          setTeams(res.data.result);
-        } else {
-          setTeams({
-            team: "",
-            win: "",
-            gamesPlayed: "",
-            draw: "",
-          });
-        }
-      });
+    axios.get(`${API_BASE_URL}/football/stats/${team}/${year}`).then((res) => {
+      setIsLoading(false);
+      if (res.data.success) {
+        setTeams(res.data.result);
+      } else {
+        setTeams({
+          team: "",
+          win: "",
+          gamesPlayed: "",
+          draw: "",
+        });
+      }
+    });
   };
 
   const [isLoading, setIsLoading] = useState(false);
   const [teams, setTeams] = useState([]);
-
-  const handleUpdateSubmit = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <div>

@@ -2,20 +2,19 @@ import axios from "axios";
 import React, { useState } from "react";
 import Alert from "../Components/Alert";
 import { ClipLoader } from "react-spinners";
+import { API_BASE_URL } from "../BaseUrl";
 
 function UpdateTeam() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     const teamName = e.target.team.value;
-    axios
-      .get(`http://localhost:5000/football/team/get/${teamName}`)
-      .then((res) => {
-        setIsLoading(false);
-        if (res.data.success) {
-          setTeams(res.data.result);
-        }
-      });
+    axios.get(`${API_BASE_URL}/football/team/get/${teamName}`).then((res) => {
+      setIsLoading(false);
+      if (res.data.success) {
+        setTeams(res.data.result);
+      }
+    });
   };
 
   const showAlert = (type) => {
@@ -64,7 +63,7 @@ function UpdateTeam() {
       year,
     });
     axios
-      .post(`http://localhost:5000/football/team/update/${id}`, {
+      .post(`${API_BASE_URL}/football/team/update/${id}`, {
         team,
         gamesPlayed,
         win,
@@ -79,14 +78,12 @@ function UpdateTeam() {
         setIsLoading(false);
         if (res.data.success) {
           showAlert("success");
-          axios
-            .get(`http://localhost:5000/football/team/get/${team}`)
-            .then((res) => {
-              setIsLoading(false);
-              if (res.data.success) {
-                setTeams(res.data.result);
-              }
-            });
+          axios.get(`${API_BASE_URL}/football/team/get/${team}`).then((res) => {
+            setIsLoading(false);
+            if (res.data.success) {
+              setTeams(res.data.result);
+            }
+          });
         } else {
           showAlert("danger");
         }
