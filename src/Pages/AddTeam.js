@@ -4,6 +4,7 @@ import { ClipLoader } from "react-spinners";
 import Alert from "../Components/Alert";
 import { API_BASE_URL } from "../BaseUrl";
 
+
 function AddTeam() {
   const clearForm = (e) => {
     e.target.team.value = "";

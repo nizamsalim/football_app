@@ -46,22 +46,5 @@ function Home() {
   );
 }
 
-function Card({ title, desc, buttonText, url }) {
-  return (
-    <div className="col-4">
-      <div class="card" style={{ width: "18rem" }}>
-        <div class="card-body">
-          <h5 class="card-title text-center">{title}</h5>
-          <p class="card-text">{desc}</p>
-          <div className="d-flex justify-content-center">
-            <Link to={url} class="btn btn-primary">
-              {buttonText}
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default Home;
+//this is test
