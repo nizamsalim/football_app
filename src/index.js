@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App";
 import Home from "./Pages/Home";
 import AddTeam from "./Pages/AddTeam";
 import UpdateTeam from "./Pages/UpdateTeam";
@@ -13,8 +14,12 @@ import DisplayAllTeams from "./Pages/DisplayAllTeams";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
     children: [
+      {
+        path: "",
+        element: <Home />,
+      },
       {
         path: "/team/add",
         element: <AddTeam />,
