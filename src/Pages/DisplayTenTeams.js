@@ -39,7 +39,12 @@ function DisplayTenTeams() {
             <label htmlFor="threshold" className="form-label">
               Wins (threshold value)
             </label>
-            <input type="text" className="form-control" id="threshold" />
+            <input
+              type="text"
+              className="form-control"
+              id="threshold"
+              required={true}
+            />
           </div>
 
           <div className="col-6 d-flex justify-content-center mt-5 w-25 mb-1">

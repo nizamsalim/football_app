@@ -40,6 +40,7 @@ function DisplayAllTeams() {
               Year (for average "goalsFor")
             </label>
             <input
+              required={true}
               type="text"
               className="form-control"
               id="year"

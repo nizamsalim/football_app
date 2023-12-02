@@ -39,13 +39,23 @@ function TeamStats() {
             <label htmlFor="team" className="form-label">
               Team name
             </label>
-            <input type="text" className="form-control" id="team" />
+            <input
+              type="text"
+              className="form-control"
+              id="team"
+              required={true}
+            />
           </div>
           <div className="col-3">
             <label htmlFor="year" className="form-label">
               Year
             </label>
-            <input type="text" className="form-control" id="year" />
+            <input
+              type="text"
+              className="form-control"
+              id="year"
+              required={true}
+            />
           </div>
 
           <div className="col-6 d-flex justify-content-center mt-5 w-25 mb-1">

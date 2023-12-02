@@ -137,6 +137,7 @@ function UpdateTeam() {
                       Team name
                     </label>
                     <input
+                      required={true}
                       type="text"
                       className="form-control"
                       id="team"
@@ -149,6 +150,7 @@ function UpdateTeam() {
                       Games played
                     </label>
                     <input
+                      required={true}
                       type="number"
                       min={0}
                       className="form-control"
@@ -162,6 +164,7 @@ function UpdateTeam() {
                       Wins
                     </label>
                     <input
+                      required={true}
                       type="number"
                       min={0}
                       className="form-control"
@@ -175,6 +178,7 @@ function UpdateTeam() {
                       Losses
                     </label>
                     <input
+                      required={true}
                       type="number"
                       min={0}
                       className="form-control"
@@ -188,6 +192,7 @@ function UpdateTeam() {
                       Draws
                     </label>
                     <input
+                      required={true}
                       type="number"
                       min={0}
                       className="form-control"
@@ -201,6 +206,7 @@ function UpdateTeam() {
                       Goals for
                     </label>
                     <input
+                      required={true}
                       type="number"
                       min={0}
                       className="form-control"
@@ -214,6 +220,7 @@ function UpdateTeam() {
                       Goals against
                     </label>
                     <input
+                      required={true}
                       type="number"
                       min={0}
                       className="form-control"
@@ -227,6 +234,7 @@ function UpdateTeam() {
                       Points
                     </label>
                     <input
+                      required={true}
                       type="number"
                       min={0}
                       className="form-control"
@@ -240,6 +248,7 @@ function UpdateTeam() {
                       Year
                     </label>
                     <input
+                      required={true}
                       type="number"
                       className="form-control"
                       id="year"
@@ -288,7 +297,12 @@ function UpdateTeam() {
             <label htmlFor="team" className="form-label">
               Search team
             </label>
-            <input type="text" className="form-control" id="team" />
+            <input
+              type="text"
+              className="form-control"
+              id="team"
+              required={true}
+            />
           </div>
 
           <div className="col-6 d-flex justify-content-center mt-5 w-25 mb-1">

@@ -4,7 +4,6 @@ import { ClipLoader } from "react-spinners";
 import Alert from "../Components/Alert";
 import { API_BASE_URL } from "../BaseUrl";
 
-
 function AddTeam() {
   const clearForm = (e) => {
     e.target.team.value = "";
@@ -83,13 +82,19 @@ function AddTeam() {
             <label htmlFor="team" className="form-label">
               Team name
             </label>
-            <input type="text" className="form-control" id="team" />
+            <input
+              type="text"
+              className="form-control"
+              id="team"
+              required={true}
+            />
           </div>
           <div className="col-md-3">
             <label htmlFor="gamesPlayed" className="form-label">
               Games played
             </label>
             <input
+              required={true}
               type="number"
               min={0}
               className="form-control"
@@ -100,19 +105,37 @@ function AddTeam() {
             <label htmlFor="win" className="form-label">
               Wins
             </label>
-            <input type="number" min={0} className="form-control" id="win" />
+            <input
+              type="number"
+              min={0}
+              className="form-control"
+              id="win"
+              required={true}
+            />
           </div>
           <div className="col-md-3">
             <label htmlFor="loss" className="form-label">
               Losses
             </label>
-            <input type="number" min={0} className="form-control" id="loss" />
+            <input
+              type="number"
+              min={0}
+              className="form-control"
+              id="loss"
+              required={true}
+            />
           </div>
           <div className="col-md-3">
             <label htmlFor="draw" className="form-label">
               Draws
             </label>
-            <input type="number" min={0} className="form-control" id="draw" />
+            <input
+              type="number"
+              min={0}
+              className="form-control"
+              id="draw"
+              required={true}
+            />
           </div>
           <div className="col-md-3">
             <label htmlFor="goalsFor" className="form-label">
@@ -123,6 +146,7 @@ function AddTeam() {
               min={0}
               className="form-control"
               id="goalsFor"
+              required={true}
             />
           </div>
           <div className="col-md-3">
@@ -130,6 +154,7 @@ function AddTeam() {
               Goals against
             </label>
             <input
+              required={true}
               type="number"
               min={0}
               className="form-control"
@@ -140,13 +165,24 @@ function AddTeam() {
             <label htmlFor="points" className="form-label">
               Points
             </label>
-            <input type="number" min={0} className="form-control" id="points" />
+            <input
+              type="number"
+              min={0}
+              className="form-control"
+              id="points"
+              required={true}
+            />
           </div>
           <div className="col-md-3">
             <label htmlFor="year" className="form-label">
               Year
             </label>
-            <input type="number" className="form-control" id="year" />
+            <input
+              type="number"
+              className="form-control"
+              id="year"
+              required={true}
+            />
           </div>
 
           <div className="col-12 d-flex justify-content-center mt-4">
